@@ -109,12 +109,66 @@
     <!-- Mobile Hero for 1024x1366 only -->
     <div class="mobile-hero-1024x1366">
         <div class="mobile-hero-content">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <img src="light_logo.png" alt="Company Logo" style="max-width: 150px; height: auto; filter: brightness(1.1);">
+            </div>
             <h1 class="mobile-hero-title">Effective Marketing for Your Business</h1>
             <a href="service.html" class="mobile-hero-btn">View Solutions</a>
         </div>
-        <img src="tom.png" alt="Team members" class="mobile-hero-image" />
+    <!-- Mobile Auto-scrolling services bar -->
+    <div class="mobile-auto-scroll-bar" style="background: #004923; padding: 15px 0; overflow: hidden; position: relative;">
+        <div class="mobile-scroll-container" style="display: flex; white-space: nowrap; animation: mobile-scroll 20s linear infinite;">
+            <div class="mobile-scroll-text" style="display: flex; gap: 40px; align-items: center; color: white; font-size: 16px; font-weight: 500;">
+                <span>Branding</span>
+                <span>•</span>
+                <span>Websites</span>
+                <span>•</span>
+                <span>Video Editing</span>
+                <span>•</span>
+                <span>Brand Identity Design</span>
+                <span>•</span>
+                <span>Social Media Management</span>
+                <span>•</span>
+                <span>Business Consulting</span>
+                <span>•</span>
+                <span>Social Media Graphics</span>
+                <span>•</span>
+                <span>Sales Strategy</span>
+                <span>•</span>
+                <span>Product Engineering</span>
+                <span>•</span>
+                <span>AI Implementation</span>
+                <span>•</span>
+                <!-- Duplicate for seamless loop -->
+                <span>Branding</span>
+                <span>•</span>
+                <span>Websites</span>
+                <span>•</span>
+                <span>Video Editing</span>
+                <span>•</span>
+                <span>Brand Identity Design</span>
+                <span>•</span>
+                <span>Social Media Management</span>
+                <span>•</span>
+                <span>Business Consulting</span>
+                <span>•</span>
+                <span>Social Media Graphics</span>
+                <span>•</span>
+                <span>Sales Strategy</span>
+                <span>•</span>
+                <span>Product Engineering</span>
+                <span>•</span>
+                <span>AI Implementation</span>
+            </div>
+        </div>
     </div>
 
+
+
+        <img src="tom.png" alt="Team members" class="mobile-hero-image" />
+    </div>
+    
+    
     <div class="rex_hero_container">
         <div class="rex_hero_left_section">
             <h1 class="rex_hero_title">Effective Marketing for Your Business</h1>
@@ -188,6 +242,92 @@
             .mobile-break {
                 display: block;
             }
+            
+            /* Center hero title and button on mobile */
+            .rex_hero_title {
+                text-align: center !important;
+                padding-left: 0 !important;
+            }
+            
+            .rex_button_container {
+                text-align: center !important;
+                padding-left: 0 !important;
+            }
+            
+            /* Center logo on all mobile devices */
+            .mobile-hero-content {
+                align-items: center !important;
+                text-align: center !important;
+                padding: 0 20px !important;
+            }
+            
+            .mobile-hero-content img {
+                display: block !important;
+                margin: 0 auto 30px auto !important;
+                max-width: 150px !important;
+                height: auto !important;
+            }
+            
+            /* Show mobile hero on all mobile devices */
+            .rex_hero_container {
+                display: none !important;
+            }
+            .mobile-hero-1024x1366 {
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100vw;
+                min-height: 100vh;
+                background: #032d42;
+                padding: 0;
+                margin: 0;
+            }
+            .mobile-hero-content {
+                width: 100vw;
+                min-height: 50vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 0 20px;
+                text-align: center;
+            }
+            .mobile-hero-title {
+                color: #fff;
+                font-size: 3rem;
+                font-weight: 700;
+                text-align: center;
+                margin-bottom: 40px;
+                font-family: inherit;
+            }
+            .mobile-hero-btn {
+                background: #fff;
+                color: #032d42;
+                border-radius: 32px;
+                padding: 20px 40px;
+                font-size: 1.5rem;
+                font-weight: 600;
+                border: none;
+                box-shadow: none;
+                text-decoration: none;
+                transition: background 0.2s;
+                display: inline-block;
+            }
+            .mobile-hero-btn:hover {
+                background: #e6e6e6;
+            }
+            .mobile-hero-image {
+                width: 100vw;
+                max-width: 100vw;
+                height: 50vh;
+                object-fit: cover;
+                display: block;
+                margin: 0 auto;
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+            }
         }
 
         /* Existing Hero Styles */
@@ -239,13 +379,28 @@
             font-size: 56px;
             font-weight: 700;
             line-height: 1.2;
+            text-align: left;
             padding-left: 40px;
             width: 100%;
             margin-bottom: 30px;
         }
 
         .rex_button_container {
+            text-align: left;
             padding-left: 40px;
+        }
+        
+        /* Desktop only - ensure left alignment */
+        @media (min-width: 769px) {
+            .rex_hero_title {
+                text-align: left !important;
+                padding-left: 40px !important;
+            }
+            
+            .rex_button_container {
+                text-align: left !important;
+                padding-left: 40px !important;
+            }
         }
 
         .rex_solutions_button {
@@ -2621,16 +2776,36 @@
         }
     }
     
+    @keyframes mobile-scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+    
+    /* Hide desktop scroll bar on mobile */
     @media (max-width: 768px) {
         .auto-scroll-bar {
-            padding: 15px 0;
+            display: none !important;
         }
-        .scroll-text {
-            font-size: 16px !important;
-            gap: 40px !important;
+    }
+    
+    @media (max-width: 1024px) {
+        .auto-scroll-bar {
+            display: none !important;
         }
-        .scroll-container {
-            animation: scroll 8s linear infinite !important;
+    }
+    
+    /* Show mobile scroll bar only on mobile */
+    .mobile-auto-scroll-bar {
+        display: none;
+    }
+    
+    @media (max-width: 768px) {
+        .mobile-auto-scroll-bar {
+            display: block !important;
         }
     }
     </style>
@@ -4313,9 +4488,10 @@
                 min-height: 50vh;
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
                 justify-content: center;
-                padding: 0 0 0 7vw;
+                padding: 0 20px;
+                text-align: center;
             }
             .mobile-hero-title {
                 color: #fff;
@@ -4380,9 +4556,10 @@
                 min-height: 50vh;
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
                 justify-content: center;
-                padding: 0 0 0 7vw;
+                padding: 0 20px;
+                text-align: center;
             }
             .mobile-hero-title {
                 color: #fff;
