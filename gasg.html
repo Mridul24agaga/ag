@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effective Marketing for Your Business</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+        }
+
+        .hero-container {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-aTmIlxW2IlDd1kcg3BE17fyCGsQt5T.png') center/cover no-repeat;
+            background-position: right center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #012B3E 0%, #024A5C 100%);
+            clip-path: polygon(0 0, 35% 0, 20% 100%, 0 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .text-content {
+            max-width: 600px;
+            color: white;
+            padding-left: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #012B3E;
+            padding: 0.9rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            width: fit-content;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(1, 43, 62, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-overlay {
+                clip-path: none;
+                background: linear-gradient(135deg, rgba(1, 43, 62, 0.9) 0%, rgba(2, 74, 92, 0.9) 100%);
+            }
+
+            .hero-background {
+                background-position: center center;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-content {
+                padding: 0 1rem;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .text-content {
+                max-width: 100%;
+                padding-left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation */
+        .text-content {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-container">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <div class="text-content">
+                <p class="subtitle">Nearly a decade in business</p>
+                <h1 class="main-title">Effective Marketing<br>for Your Business</h1>
+                <a href="#solutions" class="cta-button">View Solutions</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Morley Marketing Consultants is a brother ran company based in Leicestershire, United Kingdom.">
+    <link rel="shortcut icon" type="image/x-icon" href="Artboard_1.png">
+    <title>Morley Consulting - Marketing Agency</title>
+    <link rel="stylesheet preload" href="assets/css/plugins/fontawesome.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/swiper.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/metismenu.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/magnifying-popup.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/odometer.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/vendor/bootstrap.min.css" as="style">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&amp;display=swap"
+        rel="stylesheet preload" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="assets/images/banner/21.webp" />
+    <link rel="stylesheet preload" href="assets/css/style.css" as="style">
+</head>
+
+<body>
+    <header class="header-two header--sticky">
+        <div class="header-top">
+            <div class="content">
+                <div class="left-header-top">
+                    <p class="top-details">
+                        Are you ready for a website? <a href="contact.html">Contact Us <i
+                                class="fal fa-arrow-right"></i></a>
+                    </p>
+                </div>
+                <div class="right-header-top">
+                    <div class="working-time">
+                        <i class="far fa-clock"></i>
+                        <span>Working around the clock</span>
+                    </div>
+                    <div class="ht-social">
+                        <span>Visit Us:</span>
+                        <ul>
+                            
+                            <li><a href="https://www.linkedin.com/company/morley-marketing-consultants/"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="content">
+                <div class="header-left">
+                    <a class="thumbnail" href="index.html">
+                        <img src="dark_logo.png" alt="logo" style="max-width: 150px; height: auto;">
+                    </a>
+                    <div class="nav-area">
+        <ul class="">
+            <li class="main-nav  project-a-after">
+                <a href="index.html">Home</a>
+                
+            </li>
+    
+            <li class="main-nav mega-menu">
+                <a href="about.html">About Us</a>
+                
+            </li>
+    
+            
+            <li class="main-nav  mega-menu">
+                <a href="service.html">Service</a>
+                
+            </li>
+            <li class="main-nav mega-menu">
+                <a href="portfolio.html">Portfolio</a>
+                
+            </li>
+           
+            <li class="main-navproject-a-after">
+                <a href="contact.html">Contact</a>
+                
+            </li>
+        </ul>
+    </div>
+    
+    
+    <div class="loader-wrapper">
+        <div class="loader">
+        </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+                </div>
+                <div class="header-right">
+                    
+                    <a class="rts-btn btn-primary" href="contact.html">Contact Us</a>
+                    <button id="menu-btn" class="menu menu-btn rts-btn btn-primary btn-white ml--20">
+                        <img class="menu-dark" src="assets/images/icons/menu.png" alt="Menu-icon">
+                        <img class="menu-light" src="assets/images/icons/menu-light.png" alt="Menu-icon">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <style>
+        /* Reset only for project-related elements */
+        .project-container * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .project-container {
+            font-family: var(--font-primary);
+            background: #ffffff;
+            color: #000;
+        }
+
+        .project-container {
+            display: flex;
+            min-height: 100vh;
+            margin: 0 auto;
+        }
+
+        .left-panel {
+            flex: 1;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px;
+            position: relative;
+        }
+
+
+
+        .project-content {
+            text-align: left;
+            max-width: 500px;
+            margin-left: 0;
+            font-family: var(--font-secondary);
+        }
+
+        .project-subtitle {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            font-family: var(--font-secondary);
+        }
+
+        .project-title {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: #000;
+            font-family: var(--font-primary);
+        }
+        
+        .project-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn-checkout {
+            background: #012235;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid #012235;
+        }
+        
+        .btn-checkout:hover {
+            background: #fff;
+            color: #012235;
+        }
+        
+        .btn-contact {
+            background: transparent;
+            color: #012235;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid #012235;
+        }
+        
+        .btn-contact:hover {
+            background: #012235;
+            color: #fff;
+        }
+
+        .right-panel {
+            flex: 1;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px;
+        }
+
+        .website-mockup {
+            width: 100%;
+            max-width: 1200px;
+            height: 700px;
+            background: linear-gradient(135deg, #2A2C30 0%, #09101B 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .website-mockup img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+            border-radius: 50px;
+        }
+
+        .mockup-header {
+            background: #00ff88;
+            color: #000;
+            padding: 8px 20px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .mockup-nav {
+            background: #1a1a1a;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #00ff88;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .logo i {
+            font-size: 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+        }
+
+        .demo-btn {
+            background: #00ff88;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .provider-portal {
+            color: #00ff88;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .hero-section {
+            padding: 40px 25px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #00ff88;
+        }
+
+        .hero-description {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-watch {
+            background: #00ff88;
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-demo {
+            border: 2px solid #00ff88;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .device-mockup {
+            width: 200px;
+            height: 150px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .device-mockup img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .stats-section {
+            background: #1a1a1a;
+            padding: 30px 25px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: #fff;
+        }
+
+        .stat-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00ff88;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .media-section {
+            background: #0a0a0a;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .media-logos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .media-logo {
+            color: #666;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* Different colors for each project */
+        .project-1 .website-mockup {
+            background: linear-gradient(135deg, #2A2C30 0%, #09101B 100%);
+        }
+        
+        .project-2 .website-mockup {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .project-3 .website-mockup {
+            background: linear-gradient(135deg, #0f3460 0%, #533483 100%);
+        }
+        
+        .project-4 .website-mockup {
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .project-container {
+                flex-direction: column;
+                min-height: auto;
+                padding: 20px 0;
+            }
+            
+            .left-panel {
+                padding: 30px 20px;
+                order: 2;
+            }
+            
+            .right-panel {
+                padding: 30px 20px;
+                order: 1;
+            }
+            
+            .project-content {
+                text-align: center;
+                max-width: 100%;
+            }
+            
+            .project-subtitle {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+            
+            .project-title {
+                font-size: 28px;
+                line-height: 1.2;
+                margin-bottom: 20px;
+            }
+            
+            .project-buttons {
+                flex-direction: row;
+                gap: 10px;
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .btn-checkout,
+            .btn-contact {
+                text-align: center;
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+            
+            .website-mockup {
+                height: 400px;
+                max-width: 100%;
+            }
+            
+            .website-mockup img {
+                width: 95%;
+                height: 95%;
+                border-radius: 20px;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .media-logos {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            /* Mobile-specific container adjustments */
+            .container {
+                padding: 0 15px;
+            }
+            
+            /* Adjust spacing for mobile */
+            .project-container + .project-container {
+                margin-top: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .project-title {
+                font-size: 24px;
+            }
+            
+            .project-subtitle {
+                font-size: 12px;
+            }
+            
+            .website-mockup {
+                height: 300px;
+            }
+            
+            .left-panel,
+            .right-panel {
+                padding: 20px 15px;
+            }
+            
+            /* Make Featured Projects heading even smaller on very small screens */
+            .project-breadcrumb .title {
+                font-size: 26px !important;
+            }
+        }
+        
+        /* Make Featured Projects heading bigger */
+        .project-breadcrumb .title {
+            font-size: 64px !important;
+        }
+        
+        @media only screen and (min-width: 1200px) and (max-width: 1599px) {
+            .project-breadcrumb .title {
+                font-size: 48px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 1199px) {
+            .project-breadcrumb .title {
+                font-size: 42px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 767px) {
+            .project-breadcrumb .title {
+                font-size: 36px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 575px) {
+            .project-breadcrumb .title {
+                font-size: 30px !important;
+            }
+        }
+    </style>
+
+<div class="container" style="margin-top: 60px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="title-style-two center project-breadcrumb">
+                <span class="bg-content" style="margin-top: 50px;">Our Project</span>
+                <h1 class="title rts-text-anime-style-1">
+                    Featured Projects
+                </h1>
+                <p class="disc">
+                    Combine cutting-edge strategies with fundamental marketing solutions.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="project-container project-1">
+    <!-- Left Panel - Project Description -->
+    <div class="left-panel">
+        <div class="project-content">
+            <div class="project-subtitle">Venova Construction
+            </div>
+            <h1 class="project-title">A premium site that builds trust, highlights craftsmanship, and drives project inquiries.</h1>
+            <div class="project-buttons">
+                <a href="https://venovaconstruction.com/" class="btn-checkout">Check Out the Website</a>
+                <a href="contact.html" class="btn-contact">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Panel - Website Mockup -->
+    <div class="right-panel">
+        <div class="website-mockup">
+            <img src="venova.png" alt="StemWave Medical Device">
+        </div>
+    </div>
+</div>
+
+<div class="project-container project-2">
+    <!-- Left Panel - Project Description -->
+    <div class="left-panel">
+        <div class="project-content">
+            <div class="project-subtitle">Getmorebacklinks</div>
+            <h1 class="project-title">A clean, high-converting page that showcases value and boosts sign-ups.            </h1>
+            <div class="project-buttons">
+                <a href="https://getmorebacklinks.org/" class="btn-checkout">Check Out the Website</a>
+                <a href="contact.html" class="btn-contact">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Panel - Website Mockup -->
+    <div class="right-panel">
+        <div class="website-mockup">
+            <img src="33.png" alt="StemWave Medical Device">
+        </div>
+    </div>
+</div>
+
+<div class="project-container project-3">
+    <!-- Left Panel - Project Description -->
+    <div class="left-panel">
+        <div class="project-content">
+            <div class="project-subtitle">Happy Home Roofing</div>
+            <h1 class="project-title">Built to generate leads quickly with trust-building copy and clear CTAs.</h1>
+            <div class="project-buttons">
+                <a href="https://happyhomeroofers.com/" class="btn-checkout">Check Out the Website</a>
+                <a href="contact.html" class="btn-contact">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Panel - Website Mockup -->
+    <div class="right-panel">
+        <div class="website-mockup">
+            <img src="44 (2).png" alt="StemWave Medical Device">
+        </div>
+    </div>
+</div>
+
+<div class="project-container project-4">
+    <!-- Left Panel - Project Description -->
+    <div class="left-panel">
+        <div class="project-content">
+            <div class="project-subtitle">GetMoreSEO</div>
+            <h1 class="project-title">Simple and sharp. Explains the product, builds trust, and wins business on first visit</h1>
+            <div class="project-buttons">
+                <a href="https://getmoreseo.org/" class="btn-checkout">Check Out the Website</a>
+                <a href="contact.html" class="btn-contact">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Panel - Website Mockup -->
+    <div class="right-panel">
+        <div class="website-mockup">
+            <img src="22.png" alt="StemWave Medical Device">
+        </div>
+    </div>
+</div>
+
+    
+
+
+   <!-- rts cta area start -->
+   <div class="rts-cta-area-inner bg_image ptb--100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cta-inner-content-inner-page">
+                    <div class="left-side-content">
+                        <span>Subscribe Newsletter</span>
+                        <h3 class="title">Interested but not <br>ready?</h3>
+                        <p style="font-size: 18px; font-weight: 500;">Add your email here or message us on WhatsApp.</p>
+                    </div>
+                    <form action="#">
+                        <input type="text" placeholder="Enter Email Address">
+                        <button class="rts-btn btn-primary btn-white">Subscribe Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- rts cta area end -->
+
+ <!-- footer area start -->
+ <div class="footer-8-area-bg bg_image pt--65">
+    <div class="container pb--65">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer-logo-area-left-8">
+                    <a href="#" class="logo">
+                        <img src="LIGHT_LOGO.png" alt="logo" style="max-width: 150px; height: auto;">
+                    </a>
+                    <p class="disc">
+                        Morley Marketing Consultants is run by brothers Ben and Tom Morley, based in Leicestershire, United Kingdom.
+
+
+                    </p>
+                    <ul class="social-area-wrapper-two">
+                        <li><a href="https://www.linkedin.com/company/morley-marketing-consultants/"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="offset-lg-1 col-lg-4">
+                <div class="footer-one-single-wized">
+                    <div class="wized-title">
+                        <h5 class="title">Quick Links</h5>
+                        <img src="assets/images/footer/under-title.png" alt="finbiz_footer">
+                    </div>
+                    <div class="quick-link-inner">
+                        <ul class="links">
+                            <li><a href="contact.html"><i class="far fa-arrow-right"></i> Contact Us</a></li>
+                            <li><a href="index.html#pricing"><i class="far fa-arrow-right"></i> Pricing & Plans</a></li>
+                            <li><a href="about.html"><i class="far fa-arrow-right"></i> About Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="offset-lg-1 col-lg-3">
+                <div class="footer-one-single-wized">
+                    <div class="wized-title">
+                        <h5 class="title">Contact Us</h5>
+                        <img src="assets/images/footer/under-title.png" alt="finbiz_footer">
+                    </div>
+                    <div class="quick-link-inner d-block">
+                        <div class="signle-footer-contact-8">
+                            <div class="icon">
+                                <i class="fa-solid fa-phone-alt"></i>
+                            </div>
+                            <div class="inner-content">
+                                <a href="tel:+447457427116">+44 7457 427116</a>
+                            </div>
+                        </div>
+                        <div class="signle-footer-contact-8">
+                            <div class="icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="inner-content">
+                                <h5 class="title">Work with us</h5>
+                                <a href="mailto:team@morleyconsultants.com">team@morleyconsultants.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area-main-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright-8-wrapper">
+                        <p>Morley Marketing Consultants Ltd - Copyright 2025. All rights reserved.</p>
+                        <ul>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-of-condition.html">Terms & Condition</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer area start -->
+<div id="side-bar" class="side-bar header-two">
+<button class="close-icon-menu" title="Close menu"><i class="far fa-times"></i></button>
+<!-- inner menu area desktop start -->
+<div class="rts-sidebar-menu-desktop">
+    <a class="logo-1" href="index.html"><img class="logo" src="dark_logo.png" alt="finbiz_logo"></a>
+    <div class="body d-none d-xl-block">
+        <p class="disc">
+            Morley Marketing Consultants is a brother ran company based in Leicestershire, United Kingdom.
+        </p>
+        <div class="get-in-touch">
+            <!-- title -->
+            <div class="h6 title">Get In Touch</div>
+            <!-- title End -->
+            <div class="wrapper">
+                <!-- single -->
+                <div class="single">
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="#">+44 7457 427116</a>
+                </div>
+                <!-- single ENd -->
+                <!-- single -->
+                <div class="single">
+                    <i class="fas fa-envelope"></i>
+                    <a href="#">team@morleyconsultants.com</a>
+                </div>
+                <!-- single ENd -->
+                <!-- single -->
+                
+                <!-- single ENd -->
+            </div>
+            <div class="social-wrapper-two menu">
+                <a href="https://www.linkedin.com/company/morley-marketing-consultants/" aria-label="twitter"><i class="fab fa-linkedin"></i></a>
+                <!-- <a href="#"><i class="fab fa-linkedin"></i></a> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- mobile menu area start -->
+<div class="mobile-menu d-block d-xl-none">
+    <nav class="nav-main mainmenu-nav mt--30">
+        <ul class="mainmenu metismenu" id="mobile-menu-active">
+            <li>
+                <a href="index.html" class="main" aria-expanded="false">Home</a>
+                
+            </li>
+            <li>
+                <a href="about.html" class="main" aria-expanded="false">About</a>
+               
+            </li>
+            <li>
+                <a href="service.html" class="main" aria-expanded="false">Services</a>                
+            </li>
+            <li>
+                <a href="portfolio.html" class="main" aria-expanded="false">Portfolio</a>
+                
+            </li>
+            <li>
+                <a href="contact.html" class="main" aria-expanded="false">Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="social-wrapper-one">
+        <ul>
+            <li>
+                <a href="https://www.linkedin.com/company/morley-marketing-consultants/" aria-label="linkedin">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- mobile menu area end -->
+</div>
+<!-- inner menu area desktop End -->
+
+
+<!-- offcanvase search -->
+<div class="search-input-area">
+<div class="container">
+    <div class="search-input-inner">
+        <div class="input-div">
+            <input class="search-input autocomplete" type="text" placeholder="Search by keyword or #">
+            <button><i class="far fa-search"></i></button>
+        </div>
+    </div>
+</div>
+<div id="close" class="search-close-icon"><i class="far fa-times"></i></div>
+</div>
+<div id="anywhere-home" class="">
+</div>
+
+
+
+
+<!-- progress area start -->
+<div class="progress-wrap">
+<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+    <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+        style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+    </path>
+</svg>
+</div>
+<!-- progress area end -->
+
+<script defer src="assets/js/plugins/jquery.js"></script>
+
+<script defer src="assets/js/plugins/odometer.js"></script>
+<script defer src="assets/js/plugins/jquery-appear.js"></script>
+
+
+<script defer src="assets/js/plugins/gsap.js"></script>
+<script defer src="assets/js/plugins/split-text.js"></script>
+<script defer src="assets/js/plugins/scroll-trigger.js"></script>
+<script defer src="assets/js/plugins/smooth-scroll.js"></script>
+<script defer src="assets/js/plugins/metismenu.js"></script>
+<script defer src="assets/js/plugins/popup.js"></script>
+
+<script defer src="assets/js/vendor/bootstrap.min.js"></script>
+<script defer src="assets/js/plugins/swiper.js"></script>
+<script defer src="assets/js/plugins/contact.form.js"></script>
+
+<script defer src="assets/js/main.js"></script>
+</body>
+
+
+</html>
