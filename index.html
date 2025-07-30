@@ -3540,17 +3540,27 @@
    
 
     <section class="custom-packages-section">
-        <h1 class="main-heading">Custom Packages Available</h1>
-
-        <p class="description-text">For some established brands, they need more out of a website. Some ideas <br> cannot
-            be brought to life with a packaged branding kit.</p>
-
-        <div class="info-box">
-            Speak with us today and discover exactly what the next steps should be for your business, its free, its
-            efficient and without any commitment, you'll have a clear plan.
+        <div style="text-align: center; margin-bottom: 40px;">
+            <img src="light_logo.png" alt="Company Logo" style="max-width: 180px; height: auto; filter: brightness(1.1);">
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h1 class="main-heading" style="margin-bottom: 25px; font-size: 3.5rem; font-weight: 800; letter-spacing: -0.02em;">Custom Packages Available</h1>
+            
+            <div style="width: 80px; height: 3px; background: #004923; margin: 0 auto 30px auto; border-radius: 2px;"></div>
+            
+            <p class="description-text" style="font-size: 1.3rem; line-height: 1.7; color: rgba(255, 255, 255, 0.9); max-width: 800px; margin: 0 auto;">For some established brands, they need more out of a website. Some ideas cannot be brought to life with a packaged branding kit.</p>
         </div>
 
-        <a href="contact.html" class="contact-button">Contact Us Now</a>
+        <div class="info-box" style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
+            <div style="text-align: center; font-size: 1.4rem; line-height: 1.6; color: white; font-weight: 500;">
+                Speak with us today and discover exactly what the next steps should be for your business, it's free, it's efficient and without any commitment, you'll have a clear plan.
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="contact.html" class="contact-button" style="background: transparent; color: white; border: 1px solid white; padding: 18px 40px; font-size: 1.3rem; font-weight: 600; border-radius: 50px; transition: all 0.3s ease; text-decoration: none; display: inline-block;">Contact Us Now</a>
+        </div>
     </section>
 
     <style>
@@ -3584,8 +3594,8 @@
         }
 
         .info-box {
-            background-color: rgba(255, 255, 255, 0.95);
-            color: #333;
+            background-color: transparent;
+            color: white;
             border-radius: 16px;
             padding: 28px 36px;
             margin: 40px 0;
@@ -3618,10 +3628,30 @@
         @media (max-width: 768px) {
             .custom-packages-section {
                 padding: 40px 20px;
-                margin: 40px 20px 120px 20px;
+                margin: 40px auto 120px auto !important;
                 border-radius: 16px;
                 max-width: calc(100% - 40px);
                 width: calc(100% - 40px);
+                display: block;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                position: relative;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+            }
+            
+            .custom-packages-section * {
+                text-align: center !important;
+            }
+            
+            /* Force centering for mobile */
+            body .custom-packages-section {
+                margin-left: 20px !important;
+                margin-right: 20px !important;
+                width: calc(100% - 40px) !important;
+                max-width: calc(100% - 40px) !important;
+                left: 0 !important;
+                transform: none !important;
             }
 
             .main-heading {
@@ -3687,9 +3717,15 @@
         @media (max-width: 480px) {
             .custom-packages-section {
                 padding: 30px 16px;
-                margin: 20px 16px 100px 16px;
+                margin: 20px auto 100px auto;
                 max-width: calc(100% - 32px);
                 width: calc(100% - 32px);
+                display: block;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                position: relative;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
             }
 
             .main-heading {
