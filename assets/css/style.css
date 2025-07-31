@@ -5557,19 +5557,129 @@ Copyright (c) 2015 Daniel Eden
   font-size: 18px;
 }
 
-.header--sticky.sticky {
+.header--sticky {
+  position: relative;
+  z-index: 999;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.header--sticky.sticky-active {
   position: fixed !important;
   top: 0;
-  display: block;
-  z-index: 999;
+  left: 0;
+  right: 0;
   width: 100%;
-  background: #fff;
   box-shadow: 0px 7px 18px rgba(24, 16, 16, 0.0509803922);
+  animation: slideDown 0.3s ease-out;
 }
-.header--sticky.sticky .header-top-area-wrapper {
+
+/* Smooth slide down animation for sticky header */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%) translateZ(0);
+    opacity: 0.9;
+  }
+  to {
+    transform: translateY(0) translateZ(0);
+    opacity: 1;
+  }
+}
+
+/* Subtle hover effect for sticky header */
+.header--sticky.sticky-active:hover {
+  box-shadow: 0px 10px 25px rgba(24, 16, 16, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+/* Mobile-specific fixes for sticky header */
+@media only screen and (max-width: 768px) {
+  .header--sticky.sticky-active {
+    top: 0;
+  }
+  
+  /* Prevent iOS Safari viewport issues */
+  @supports (-webkit-touch-callout: none) {
+    .header--sticky.sticky-active {
+      top: env(safe-area-inset-top);
+    }
+  }
+}
+
+/* Extra small mobile devices */
+@media only screen and (max-width: 480px) {
+  .header--sticky.sticky-active {
+    box-shadow: 0px 5px 15px rgba(24, 16, 16, 0.04);
+  }
+  
+  .header--sticky.sticky-active:hover {
+    box-shadow: 0px 6px 18px rgba(24, 16, 16, 0.05);
+  }
+}
+@media only screen and (max-width: 768px) {
+  .header--sticky {
+    position: relative;
+    z-index: 999;
+    background: #fff;
+    transform: translateZ(0);
+    will-change: transform;
+    transition: all 0.3s ease;
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+  }
+  
+  .header--sticky.sticky-active {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  box-shadow: 0px 7px 18px rgba(24, 16, 16, 0.0509803922);
+  animation: slideDown 0.3s ease-out;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+  
+  /* Prevent iOS Safari viewport issues */
+  @supports (-webkit-touch-callout: none) {
+    .header--sticky.sticky-active {
+      top: env(safe-area-inset-top);
+    }
+  }
+  
+  /* Enhanced mobile touch scrolling */
+  .header--sticky.sticky-active {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  
+  /* Ensure first content element doesn't get hidden */
+  .mobile-hero-1024x1366,
+  .rex_hero_container {
+    margin-top: 0;
+  }
+  
+  /* Mobile-specific hover effects */
+  .header--sticky.sticky-active:hover {
+    box-shadow: 0px 8px 20px rgba(24, 16, 16, 0.06);
+  }
+}
+
+/* Extra small mobile devices */
+@media only screen and (max-width: 480px) {
+  .header--sticky.sticky-active {
+    box-shadow: 0px 5px 15px rgba(24, 16, 16, 0.04);
+  }
+  
+  .header--sticky.sticky-active:hover {
+    box-shadow: 0px 6px 18px rgba(24, 16, 16, 0.05);
+  }
+}
+.header--sticky .header-top-area-wrapper {
   display: none;
 }
-.header--sticky.sticky.header-one {
+.header--sticky.header-one {
   background: #fff;
 }
 
@@ -6075,7 +6185,7 @@ Copyright (c) 2015 Daniel Eden
   background: #fff;
 }
 
-.header-five.header--sticky.sticky {
+.header-five.header--sticky {
   backdrop-filter: none;
   box-shadow: none;
 }
@@ -6112,15 +6222,27 @@ Copyright (c) 2015 Daniel Eden
   right: 0;
   z-index: 100;
 }
-.header-transparent.header--sticky.sticky {
-  position: fixed !important;
-  top: 0;
-  display: block;
+.header-transparent.header--sticky {
+  position: relative;
   backdrop-filter: blur(9px);
   z-index: 999;
+  background: #20282d;
+}
+
+.header-transparent.header--sticky.sticky-active {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   box-shadow: 0px 7px 18px rgba(24, 16, 16, 0.0509803922);
   background: #20282d;
+  animation: slideDown 0.3s ease-out;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
 }
 
 .header-transparent-main-wrapper {
@@ -7605,7 +7727,7 @@ ul.mega-menu-item.parent-nav {
   gap: 0 !important;
 }
 
-header.header--sticky.sticky .nav-area ul li.main-nav {
+header.header--sticky .nav-area ul li.main-nav {
   padding: 30px 0;
   cursor: pointer;
 }
@@ -8235,7 +8357,7 @@ header.header--sticky.sticky .nav-area ul li.main-nav {
 
 .hero-left {
   flex: 2;
-  background-color: #12a3e;
+  background-color: #12a3e6;
   padding: 60px 40px;
   display: flex;
   flex-direction: column;
@@ -8274,7 +8396,7 @@ header.header--sticky.sticky .nav-area ul li.main-nav {
 .hero-btn {
   display: inline-block;
   background: white;
-  color: #12a3e;
+  color: #12a3e6;
   padding: 15px 30px;
   text-decoration: none;
   border-radius: 8px;
@@ -13489,13 +13611,13 @@ section.main-wrapper-sticky .sticky-statement.narrow .left-side img {
     margin: 0;
   }
 }
-.page-wrapper-business-coach .header-transparent.header--sticky.sticky {
+.page-wrapper-business-coach .header-transparent.header--sticky {
   width: calc(100% - 99px);
   transform: translateX(-50%);
   left: 50%;
 }
 @media only screen and (max-width: 1199px) {
-  .page-wrapper-business-coach .header-transparent.header--sticky.sticky {
+  .page-wrapper-business-coach .header-transparent.header--sticky {
     width: 100%;
   }
 }
@@ -24404,7 +24526,7 @@ body.contact-page .rts-breadcrumb-area .title-area-left {
   padding-right: 0;
   padding-left: 30px;
 }
-[dir=rtl].page-wrapper-business-coach .header-transparent.header--sticky.sticky {
+[dir=rtl].page-wrapper-business-coach .header-transparent.header--sticky {
   width: calc(100% - 99px);
   transform: translateX(50%);
   right: 50%;

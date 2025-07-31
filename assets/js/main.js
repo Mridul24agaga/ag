@@ -1568,13 +1568,52 @@
       });
     },
     stickyHeader: function (e) {
-      $(window).scroll(function () {
-        if ($(this).scrollTop() > 150) {
-          $('.header--sticky').addClass('sticky')
-        } else {
-          $('.header--sticky').removeClass('sticky')
+      // Simple, reliable sticky header for both PC and mobile
+      const header = $('.header--sticky');
+      let isSticky = false;
+      
+      function updateStickyHeader() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 0 && !isSticky) {
+          header.addClass('sticky-active');
+          isSticky = true;
+        } else if (scrollTop <= 0 && isSticky) {
+          header.removeClass('sticky-active');
+          isSticky = false;
         }
-      })
+      }
+      
+      // Debounce function
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+      
+      // Bind scroll event
+      $(window).on('scroll', debounce(updateStickyHeader, 10));
+      
+      // Initialize on page load
+      $(document).ready(function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > 0) {
+          header.addClass('sticky-active');
+          isSticky = true;
+        }
+      });
+      
+      // Handle resize and orientation change
+      $(window).on('resize', debounce(updateStickyHeader, 100));
+      $(window).on('orientationchange', function() {
+        setTimeout(updateStickyHeader, 100);
+      });
     },
     galleryPopUpmag: function () {
       $('.gallery-image').magnificPopup({
