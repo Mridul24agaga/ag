@@ -1568,19 +1568,35 @@
       });
     },
     stickyHeader: function (e) {
-      // Simple, reliable sticky header for both PC and mobile
+      // Bulletproof sticky header for all devices including iPhones
       const header = $('.header--sticky');
       let isSticky = false;
+      let headerHeight = 0;
+      
+      // Get header height to prevent page jumps
+      function getHeaderHeight() {
+        headerHeight = header.outerHeight();
+        return headerHeight;
+      }
       
       function updateStickyHeader() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         if (scrollTop > 0 && !isSticky) {
+          // Add sticky class
           header.addClass('sticky-active');
           isSticky = true;
+          
+          // Add padding to body to prevent page jump
+          $('body').css('padding-top', headerHeight + 'px');
+          
         } else if (scrollTop <= 0 && isSticky) {
+          // Remove sticky class
           header.removeClass('sticky-active');
           isSticky = false;
+          
+          // Remove padding from body
+          $('body').css('padding-top', '0px');
         }
       }
       
@@ -1597,23 +1613,78 @@
         };
       }
       
-      // Bind scroll event
-      $(window).on('scroll', debounce(updateStickyHeader, 10));
-      
       // Initialize on page load
       $(document).ready(function() {
+        // Get initial header height
+        getHeaderHeight();
+        
+        // Check if already scrolled
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if (scrollTop > 0) {
           header.addClass('sticky-active');
           isSticky = true;
+          $('body').css('padding-top', headerHeight + 'px');
         }
+        
+        // Set header styles for mobile compatibility
+        header.css({
+          'will-change': 'transform',
+          'backface-visibility': 'hidden',
+          '-webkit-transform': 'translateZ(0)',
+          '-webkit-backface-visibility': 'hidden'
+        });
       });
       
-      // Handle resize and orientation change
-      $(window).on('resize', debounce(updateStickyHeader, 100));
+      // Bind scroll event with passive listener for better mobile performance
+      $(window).on('scroll', debounce(updateStickyHeader, 5), { passive: true });
+      
+      // Handle resize to recalculate header height
+      $(window).on('resize', debounce(function() {
+        getHeaderHeight();
+        if (isSticky) {
+          $('body').css('padding-top', headerHeight + 'px');
+        }
+      }, 100));
+      
+      // Handle orientation change for mobile
       $(window).on('orientationchange', function() {
-        setTimeout(updateStickyHeader, 100);
+        setTimeout(function() {
+          getHeaderHeight();
+          if (isSticky) {
+            $('body').css('padding-top', headerHeight + 'px');
+          }
+          updateStickyHeader();
+        }, 100);
       });
+      
+      // Handle iOS Safari viewport changes
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      
+      function updateViewportHeight() {
+        vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+      
+      $(window).on('resize', debounce(updateViewportHeight, 100));
+      
+      // Mobile-specific fixes
+      if (window.innerWidth <= 768) {
+        // Ensure smooth scrolling on mobile
+        $('html, body').css({
+          '-webkit-overflow-scrolling': 'touch',
+          'scroll-behavior': 'smooth'
+        });
+        
+        // Prevent iOS Safari issues
+        if (navigator.userAgent.match(/iPhone|iPad|iPod/)) {
+          header.css({
+            'position': 'relative',
+            '-webkit-transform': 'translateZ(0)',
+            '-webkit-backface-visibility': 'hidden'
+          });
+        }
+      }
     },
     galleryPopUpmag: function () {
       $('.gallery-image').magnificPopup({
