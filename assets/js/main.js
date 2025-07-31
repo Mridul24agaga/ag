@@ -1615,24 +1615,46 @@
       
       // Initialize on page load
       $(document).ready(function() {
-        // Get initial header height
-        getHeaderHeight();
+        // Force header initialization for mobile
+        setTimeout(function() {
+          // Get initial header height
+          getHeaderHeight();
+          
+          // Check if already scrolled
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          if (scrollTop > 0) {
+            header.addClass('sticky-active');
+            isSticky = true;
+            $('body').css('padding-top', headerHeight + 'px');
+          }
+          
+          // Set header styles for mobile compatibility
+          header.css({
+            'will-change': 'transform',
+            'backface-visibility': 'hidden',
+            '-webkit-transform': 'translateZ(0)',
+            '-webkit-backface-visibility': 'hidden'
+          });
+          
+          // Force update for mobile browsers
+          updateStickyHeader();
+        }, 100);
         
-        // Check if already scrolled
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > 0) {
-          header.addClass('sticky-active');
-          isSticky = true;
-          $('body').css('padding-top', headerHeight + 'px');
+        // Additional initialization for mobile browsers
+        if (window.innerWidth <= 768) {
+          setTimeout(function() {
+            getHeaderHeight();
+            updateStickyHeader();
+          }, 500);
+          
+          // Force re-initialization after images load
+          $(window).on('load', function() {
+            setTimeout(function() {
+              getHeaderHeight();
+              updateStickyHeader();
+            }, 200);
+          });
         }
-        
-        // Set header styles for mobile compatibility
-        header.css({
-          'will-change': 'transform',
-          'backface-visibility': 'hidden',
-          '-webkit-transform': 'translateZ(0)',
-          '-webkit-backface-visibility': 'hidden'
-        });
       });
       
       // Bind scroll event with passive listener for better mobile performance
@@ -1682,6 +1704,34 @@
             'position': 'relative',
             '-webkit-transform': 'translateZ(0)',
             '-webkit-backface-visibility': 'hidden'
+          });
+        }
+        
+        // Force mobile initialization
+        $(window).on('pageshow', function(event) {
+          if (event.originalEvent.persisted) {
+            setTimeout(function() {
+              getHeaderHeight();
+              updateStickyHeader();
+            }, 100);
+          }
+        });
+        
+        // Handle mobile browser back/forward navigation
+        $(window).on('popstate', function() {
+          setTimeout(function() {
+            getHeaderHeight();
+            updateStickyHeader();
+          }, 100);
+        });
+        
+        // Additional mobile browser compatibility
+        if (navigator.userAgent.match(/Android|iPhone|iPad|iPod/)) {
+          $(window).on('orientationchange', function() {
+            setTimeout(function() {
+              getHeaderHeight();
+              updateStickyHeader();
+            }, 300);
           });
         }
       }

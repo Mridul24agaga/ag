@@ -5622,6 +5622,19 @@ body {
     width: 100% !important;
     z-index: 9999 !important;
   }
+  
+  /* Force header initialization on mobile */
+  .header--sticky {
+    position: relative !important;
+    z-index: 999 !important;
+    background: #fff !important;
+    width: 100% !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    will-change: transform !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+  }
 }
 
 /* Mobile-specific fixes for sticky header */
