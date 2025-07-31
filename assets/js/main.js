@@ -1568,172 +1568,73 @@
       });
     },
     stickyHeader: function (e) {
-      // Bulletproof sticky header for all devices including iPhones
+      // Simple, bulletproof sticky header
       const header = $('.header--sticky');
-      let isSticky = false;
-      let headerHeight = 0;
+      let headerHeight = header.outerHeight();
       
-      // Get header height to prevent page jumps
-      function getHeaderHeight() {
-        headerHeight = header.outerHeight();
-        return headerHeight;
-      }
-      
-      function updateStickyHeader() {
+      // Simple scroll handler
+      function handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        if (scrollTop > 0 && !isSticky) {
-          // Add sticky class
+        if (scrollTop > 10) {
           header.addClass('sticky-active');
-          isSticky = true;
-          
           // Add padding to body to prevent page jump
           $('body').css('padding-top', headerHeight + 'px');
-          
-        } else if (scrollTop <= 0 && isSticky) {
-          // Remove sticky class
+        } else {
           header.removeClass('sticky-active');
-          isSticky = false;
-          
           // Remove padding from body
           $('body').css('padding-top', '0px');
         }
       }
       
-      // Debounce function
-      function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-          const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-          };
-          clearTimeout(timeout);
-          timeout = setTimeout(later, wait);
-        };
-      }
-      
-      // Initialize on page load
+      // Initialize
       $(document).ready(function() {
-        // Force header initialization for mobile
-        setTimeout(function() {
-          // Get initial header height
-          getHeaderHeight();
-          
-          // Check if already scrolled
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          if (scrollTop > 0) {
-            header.addClass('sticky-active');
-            isSticky = true;
-            $('body').css('padding-top', headerHeight + 'px');
-          }
-          
-          // Set header styles for mobile compatibility
+        // Set initial state
+        handleScroll();
+        
+        // Mobile-specific setup
+        if (window.innerWidth <= 768) {
+          // Force mobile styles
           header.css({
+            'position': 'fixed',
+            'z-index': '999',
+            'background': '#fff',
+            'width': '100%',
+            'transform': 'translateZ(0)',
+            '-webkit-transform': 'translateZ(0)',
             'will-change': 'transform',
             'backface-visibility': 'hidden',
-            '-webkit-transform': 'translateZ(0)',
             '-webkit-backface-visibility': 'hidden'
           });
           
-          // Force update for mobile browsers
-          updateStickyHeader();
-        }, 100);
-        
-        // Additional initialization for mobile browsers
-        if (window.innerWidth <= 768) {
-          setTimeout(function() {
-            getHeaderHeight();
-            updateStickyHeader();
-          }, 500);
-          
-          // Force re-initialization after images load
-          $(window).on('load', function() {
-            setTimeout(function() {
-              getHeaderHeight();
-              updateStickyHeader();
-            }, 200);
+          // Ensure smooth scrolling
+          $('html, body').css({
+            '-webkit-overflow-scrolling': 'touch'
           });
         }
       });
       
-      // Bind scroll event with passive listener for better mobile performance
-      $(window).on('scroll', debounce(updateStickyHeader, 5), { passive: true });
+      // Bind scroll event
+      $(window).on('scroll', handleScroll);
       
-      // Handle resize to recalculate header height
-      $(window).on('resize', debounce(function() {
-        getHeaderHeight();
-        if (isSticky) {
-          $('body').css('padding-top', headerHeight + 'px');
-        }
-      }, 100));
+      // Handle resize
+      $(window).on('resize', function() {
+        headerHeight = header.outerHeight();
+        handleScroll();
+      });
       
-      // Handle orientation change for mobile
+      // Handle orientation change
       $(window).on('orientationchange', function() {
         setTimeout(function() {
-          getHeaderHeight();
-          if (isSticky) {
-            $('body').css('padding-top', headerHeight + 'px');
-          }
-          updateStickyHeader();
+          headerHeight = header.outerHeight();
+          handleScroll();
         }, 100);
       });
       
-      // Handle iOS Safari viewport changes
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-      
-      function updateViewportHeight() {
-        vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-      }
-      
-      $(window).on('resize', debounce(updateViewportHeight, 100));
-      
-      // Mobile-specific fixes
+      // Mobile browser compatibility
       if (window.innerWidth <= 768) {
-        // Ensure smooth scrolling on mobile
-        $('html, body').css({
-          '-webkit-overflow-scrolling': 'touch',
-          'scroll-behavior': 'smooth'
-        });
-        
-        // Prevent iOS Safari issues
-        if (navigator.userAgent.match(/iPhone|iPad|iPod/)) {
-          header.css({
-            'position': 'relative',
-            '-webkit-transform': 'translateZ(0)',
-            '-webkit-backface-visibility': 'hidden'
-          });
-        }
-        
-        // Force mobile initialization
-        $(window).on('pageshow', function(event) {
-          if (event.originalEvent.persisted) {
-            setTimeout(function() {
-              getHeaderHeight();
-              updateStickyHeader();
-            }, 100);
-          }
-        });
-        
-        // Handle mobile browser back/forward navigation
-        $(window).on('popstate', function() {
-          setTimeout(function() {
-            getHeaderHeight();
-            updateStickyHeader();
-          }, 100);
-        });
-        
-        // Additional mobile browser compatibility
-        if (navigator.userAgent.match(/Android|iPhone|iPad|iPod/)) {
-          $(window).on('orientationchange', function() {
-            setTimeout(function() {
-              getHeaderHeight();
-              updateStickyHeader();
-            }, 300);
-          });
-        }
+        $(window).on('pageshow', handleScroll);
+        $(window).on('popstate', handleScroll);
       }
     },
     galleryPopUpmag: function () {
