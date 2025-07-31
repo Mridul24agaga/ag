@@ -5571,20 +5571,9 @@ Copyright (c) 2015 Daniel Eden
   right: 0;
   width: 100%;
   box-shadow: 0px 7px 18px rgba(24, 16, 16, 0.0509803922);
-  animation: slideDown 0.3s ease-out;
 }
 
-/* Smooth slide down animation for sticky header */
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%) translateZ(0);
-    opacity: 0.9;
-  }
-  to {
-    transform: translateY(0) translateZ(0);
-    opacity: 1;
-  }
-}
+
 
 /* Subtle hover effect for sticky header */
 .header--sticky.sticky-active:hover {
@@ -5635,7 +5624,6 @@ Copyright (c) 2015 Daniel Eden
   right: 0;
   width: 100%;
   box-shadow: 0px 7px 18px rgba(24, 16, 16, 0.0509803922);
-  animation: slideDown 0.3s ease-out;
   transform: translateZ(0);
   will-change: transform, opacity;
   backface-visibility: hidden;
