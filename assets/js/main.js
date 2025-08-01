@@ -1545,22 +1545,22 @@
       function handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
+        // On mobile: Header is ALWAYS sticky, never changes
+        if (isMobile) {
+          header.addClass('sticky-active');
+          isSticky = true;
+          return;
+        }
+        
+        // Desktop behavior
         if (scrollTop > 10 && !isSticky) {
           header.addClass('sticky-active');
           isSticky = true;
-          
-          // For mobile: Don't add padding to body to prevent page jump
-          if (!isMobile) {
-            $('body').css('padding-top', headerHeight + 'px');
-          }
+          $('body').css('padding-top', headerHeight + 'px');
         } else if (scrollTop <= 10 && isSticky) {
           header.removeClass('sticky-active');
           isSticky = false;
-          
-          // For mobile: Don't add padding to body to prevent page jump
-          if (!isMobile) {
-            $('body').css('padding-top', '0px');
-          }
+          $('body').css('padding-top', '0px');
         }
       }
       
@@ -1571,18 +1571,26 @@
         
         // Mobile-specific setup
         if (isMobile) {
-          // Force mobile styles without padding changes
+          // PERMANENTLY FIXED HEADER ON MOBILE - NEVER MOVES
           header.css({
-            'position': 'relative',
-            'z-index': '999',
-            'background': '#fff',
+            'position': 'fixed',
+            'top': '0',
+            'left': '0',
+            'right': '0',
             'width': '100%',
+            'z-index': '9999',
+            'background': '#fff',
             'transform': 'translateZ(0)',
             '-webkit-transform': 'translateZ(0)',
             'will-change': 'transform',
             'backface-visibility': 'hidden',
-            '-webkit-backface-visibility': 'hidden'
+            '-webkit-backface-visibility': 'hidden',
+            'box-shadow': '0px 7px 18px rgba(24, 16, 16, 0.0509803922)',
+            'contain': 'layout style paint'
           });
+          
+          // Always add sticky class on mobile
+          header.addClass('sticky-active');
           
           // Ensure smooth scrolling on mobile
           $('html, body').css({
