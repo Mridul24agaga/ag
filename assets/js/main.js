@@ -1535,35 +1535,45 @@
       // Original scroll-to-top functionality removed
     },
     stickyHeader: function (e) {
-      // Simple, bulletproof sticky header
+      // Mobile-optimized sticky header with no page jump
       const header = $('.header--sticky');
       let headerHeight = header.outerHeight();
+      let isMobile = window.innerWidth <= 768;
+      let isSticky = false;
       
-      // Simple scroll handler
+      // Function to handle scroll without page jump
       function handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        if (scrollTop > 10) {
+        if (scrollTop > 10 && !isSticky) {
           header.addClass('sticky-active');
-          // Add padding to body to prevent page jump
-          $('body').css('padding-top', headerHeight + 'px');
-        } else {
+          isSticky = true;
+          
+          // For mobile: Don't add padding to body to prevent page jump
+          if (!isMobile) {
+            $('body').css('padding-top', headerHeight + 'px');
+          }
+        } else if (scrollTop <= 10 && isSticky) {
           header.removeClass('sticky-active');
-          // Remove padding from body
-          $('body').css('padding-top', '0px');
+          isSticky = false;
+          
+          // For mobile: Don't add padding to body to prevent page jump
+          if (!isMobile) {
+            $('body').css('padding-top', '0px');
+          }
         }
       }
       
       // Initialize
       $(document).ready(function() {
-        // Set initial state
-        handleScroll();
+        // Set initial header height
+        headerHeight = header.outerHeight();
         
         // Mobile-specific setup
-        if (window.innerWidth <= 768) {
-          // Force mobile styles
+        if (isMobile) {
+          // Force mobile styles without padding changes
           header.css({
-            'position': 'fixed',
+            'position': 'relative',
             'z-index': '999',
             'background': '#fff',
             'width': '100%',
@@ -1574,34 +1584,65 @@
             '-webkit-backface-visibility': 'hidden'
           });
           
-          // Ensure smooth scrolling
+          // Ensure smooth scrolling on mobile
           $('html, body').css({
-            '-webkit-overflow-scrolling': 'touch'
+            '-webkit-overflow-scrolling': 'touch',
+            'scroll-behavior': 'auto'
           });
+          
+          // Prevent any body padding on mobile
+          $('body').css('padding-top', '0px');
         }
+        
+        // Set initial state
+        handleScroll();
       });
       
-      // Bind scroll event
-      $(window).on('scroll', handleScroll);
+      // Bind scroll event with throttling for mobile
+      let scrollTimeout;
+      $(window).on('scroll', function() {
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout);
+        }
+        scrollTimeout = setTimeout(handleScroll, 10);
+      });
       
       // Handle resize
       $(window).on('resize', function() {
         headerHeight = header.outerHeight();
+        isMobile = window.innerWidth <= 768;
+        
+        // Reset mobile styles on resize
+        if (isMobile) {
+          $('body').css('padding-top', '0px');
+        }
+        
         handleScroll();
       });
       
-      // Handle orientation change
+      // Handle orientation change for mobile
       $(window).on('orientationchange', function() {
         setTimeout(function() {
           headerHeight = header.outerHeight();
+          isMobile = window.innerWidth <= 768;
+          
+          // Reset mobile styles on orientation change
+          if (isMobile) {
+            $('body').css('padding-top', '0px');
+          }
+          
           handleScroll();
         }, 100);
       });
       
       // Mobile browser compatibility
-      if (window.innerWidth <= 768) {
-        $(window).on('pageshow', handleScroll);
-        $(window).on('popstate', handleScroll);
+      if (isMobile) {
+        $(window).on('pageshow', function() {
+          setTimeout(handleScroll, 50);
+        });
+        $(window).on('popstate', function() {
+          setTimeout(handleScroll, 50);
+        });
       }
     },
     galleryPopUpmag: function () {
