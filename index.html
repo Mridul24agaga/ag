@@ -226,6 +226,52 @@
     
 
     <style>
+        /* Chrome-specific fixes for mobile only */
+        @media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: 768px) {
+            .header--sticky {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                z-index: 9999 !important;
+                background: #fff !important;
+                transform: translate3d(0,0,0) !important;
+                -webkit-transform: translate3d(0,0,0) !important;
+                backface-visibility: hidden !important;
+                -webkit-backface-visibility: hidden !important;
+                perspective: 1000px !important;
+                -webkit-perspective: 1000px !important;
+                transform-style: preserve-3d !important;
+                -webkit-transform-style: preserve-3d !important;
+                will-change: transform !important;
+                transition: none !important;
+                animation: none !important;
+            }
+
+            .header--sticky.sticky-active {
+                box-shadow: 0px 4px 10px rgba(0,0,0,0.1) !important;
+            }
+
+            /* Prevent content jump on Chrome mobile */
+                body {
+                    padding-top: 0 !important;
+                    margin-top: 0 !important;
+                }
+                
+                .mobile-hero-1024x1366 {
+                    margin-top: 80px !important;
+                    padding-top: 0 !important;
+                    transform: translate3d(0,0,0) !important;
+                    -webkit-transform: translate3d(0,0,0) !important;
+                    backface-visibility: hidden !important;
+                    -webkit-backface-visibility: hidden !important;
+                    will-change: transform !important;
+                    transition: none !important;
+                }
+            }
+        }
+        
         /* Header Styles - REMOVED */
 
         /* Mobile break styles */
