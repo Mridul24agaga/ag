@@ -5611,6 +5611,7 @@ body {
     scroll-behavior: auto;
     padding-top: 0 !important;
     margin: 0 !important;
+    overflow-x: hidden !important;
   }
   
   /* PERMANENTLY FIXED HEADER ON MOBILE - NEVER MOVES */
@@ -5629,6 +5630,7 @@ body {
     -webkit-backface-visibility: hidden !important;
     box-shadow: 0px 7px 18px rgba(24, 16, 16, 0.0509803922) !important;
     contain: layout style paint !important;
+    transition: none !important;
   }
   
   /* Always active on mobile */
@@ -5646,12 +5648,32 @@ body {
     -webkit-backface-visibility: hidden !important;
     box-shadow: 0px 7px 18px rgba(24, 16, 16, 0.0509803922) !important;
     contain: layout style paint !important;
+    transition: none !important;
   }
   
   /* Prevent any content shift on mobile */
   .header--sticky + * {
     margin-top: 0 !important;
     padding-top: 0 !important;
+  }
+  
+  /* Fix mobile hero section to prevent jumps */
+  .mobile-hero-1024x1366 {
+    position: relative !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    will-change: auto !important;
+    contain: layout style paint !important;
+    margin-top: 80px !important;
+  }
+  
+  /* Prevent mobile hero image from jumping */
+  .mobile-hero-image {
+    position: relative !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    will-change: auto !important;
+    contain: layout style paint !important;
   }
 }
 
@@ -5676,6 +5698,7 @@ body {
     overscroll-behavior: contain !important;
     contain: layout style paint !important;
     transition: none !important;
+    animation: none !important;
   }
   
   .header--sticky.sticky-active {
@@ -5696,6 +5719,7 @@ body {
     overscroll-behavior: contain !important;
     contain: layout style paint !important;
     transition: none !important;
+    animation: none !important;
   }
   
   /* Prevent iOS Safari viewport issues */

@@ -1545,10 +1545,13 @@
       function handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        // On mobile: Header is ALWAYS sticky, never changes
+        // On mobile: Header is ALWAYS sticky, never changes - NO SCROLL EFFECTS
         if (isMobile) {
           header.addClass('sticky-active');
           isSticky = true;
+          
+          // Prevent any scroll-based changes on mobile
+          $('body').css('padding-top', '0px');
           return;
         }
         
