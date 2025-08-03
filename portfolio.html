@@ -494,6 +494,16 @@
         }
         
         @media (max-width: 768px) {
+            /* Add margin-top for projects section on mobile */
+            .container[style*="margin-top: 60px"] {
+                margin-top: 120px !important;
+            }
+            
+            /* Add extra spacing before the projects section */
+            .project-breadcrumb {
+                margin-top: 40px !important;
+            }
+            
             .project-container {
                 flex-direction: column;
                 min-height: auto;
@@ -574,6 +584,16 @@
             .project-container + .project-container {
                 margin-top: 40px;
             }
+            
+            /* Add margin-top to first project container on mobile */
+            .project-container.project-1 {
+                margin-top: 50px !important;
+            }
+            
+            /* Additional spacing for mobile */
+            .project-container:first-of-type {
+                margin-top: 40px !important;
+            }
         }
         
         @media (max-width: 480px) {
@@ -633,7 +653,7 @@
 <div class="container" style="margin-top: 60px;">
     <div class="row">
         <div class="col-lg-12">
-            <div class="title-style-two center project-breadcrumb">
+            <div class="title-style-two center project-breadcrumb" style="margin-top: 20px;">
                 <span class="bg-content" style="margin-top: 50px;">Our Project</span>
                 <h1 class="title rts-text-anime-style-1">
                     Featured Projects

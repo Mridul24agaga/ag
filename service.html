@@ -116,6 +116,45 @@
                 width: 100% !important;
                 margin-bottom: 25px !important;
             }
+
+            /* Add margin-top for Our Services section on mobile */
+            .rts-breadcrumb-area.small-h {
+                margin-top: 80px !important;
+            }
+
+            /* Additional spacing for the title area */
+            .rts-breadcrumb-area.small-h .title-area-left {
+                margin-top: 30px !important;
+            }
+
+            /* Fix double layering issue on mobile - adjust background elements */
+            .rts-breadcrumb-area.small-h .bg-title {
+                opacity: 0.3 !important;
+                font-size: 60px !important;
+                z-index: 1 !important;
+            }
+
+            .rts-breadcrumb-area.small-h .pre {
+                opacity: 0.7 !important;
+                font-size: 14px !important;
+                z-index: 2 !important;
+            }
+
+            /* Hide shape area on mobile to prevent layering issues */
+            .rts-breadcrumb-area.small-h .shape-area {
+                display: none !important;
+            }
+
+            /* Ensure clean background on mobile */
+            .rts-breadcrumb-area.small-h {
+                background: transparent !important;
+            }
+
+            /* Adjust title positioning to prevent overlap */
+            .rts-breadcrumb-area.small-h .title {
+                position: relative !important;
+                z-index: 3 !important;
+            }
         }
 
         /* Working Process Area Three Title Styles */
@@ -360,11 +399,11 @@
     
 
     <!-- about us area wrapper main -->
-    <div class="rts-breadcrumb-area small-h">
+    <div class="rts-breadcrumb-area small-h" style="margin-top: 40px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="title-area-left center">
+                    <div class="title-area-left center" style="margin-top: 20px;">
                         <span class="pre">Our Services</span>
                         <span class="bg-title">Our Services</span>
                         <h1 class="title rts-text-anime-style-1">
