@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Growth Plan - Morley Consultants</title>
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/fontawesome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&amp;display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --navy-primary: #012B3E;
+            --navy-secondary: #012032;
+            --navy-accent: #012235;
+            --green-accent: #004923;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --text-dark: #1C2539;
+            --text-light: #666666;
+            --border-color: rgba(32, 40, 45, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            min-height: 100vh;
+            color: var(--text-dark);
+            margin: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .form-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .image-section {
+            flex: 0 0 50%;
+            width: 50%;
+            background: linear-gradient(135deg, var(--navy-primary) 0%, var(--navy-secondary) 100%), 
+                        url('tom.png') center/cover;
+            background-blend-mode: overlay;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(135deg, rgba(0, 0, 0, 0.75), rgba(26, 35, 50, 0.85));
+            background-size: 30px 30px, 30px 30px, 100% 100%;
+            background-position: 0 0, 15px 15px, 0 0;
+        }
+
+        .image-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            padding: 40px;
+            max-width: 500px;
+        }
+
+        .image-content h2 {
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            color: var(--white);
+        }
+
+        .image-content p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-wrapper {
+            flex: 0 0 50%;
+            width: 50%;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .progress-bar-container {
+            background: linear-gradient(135deg, var(--navy-primary) 0%, var(--navy-secondary) 100%);
+            padding: 25px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .progress-bar-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.15);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--white) 0%, rgba(255, 255, 255, 0.9) 100%);
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            width: 0%;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+        }
+
+        .step-indicator {
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'DM Sans', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-content {
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .headline {
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--navy-primary);
+            margin-bottom: 25px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .sub-copy {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            line-height: 1.7;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .question {
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--navy-primary);
+            margin-bottom: 40px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            color: var(--navy-primary);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 18px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--navy-accent);
+            box-shadow: 0 4px 20px rgba(1, 34, 53, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .radio-option {
+            position: relative;
+            cursor: pointer;
+            padding: 25px 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: var(--white);
+            box-shadow: 0px 9px 18px rgba(24, 16, 16, 0.05), 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .radio-option:hover {
+            border-color: var(--navy-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(1, 34, 53, 0.15);
+        }
+
+        .radio-option.selected {
+            border-color: var(--navy-accent);
+            background: rgba(1, 34, 53, 0.05);
+            box-shadow: 0 8px 25px rgba(1, 34, 53, 0.2);
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-option .radio-text {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            color: var(--navy-primary);
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+
+        .radio-option .radio-description {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            background: var(--navy-accent);
+            color: var(--white);
+            border: none;
+            padding: 18px 40px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            margin: 8px;
+            box-shadow: 0 4px 15px rgba(1, 34, 53, 0.2);
+        }
+
+        .btn:hover {
+            background: var(--navy-primary);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(1, 34, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--navy-primary);
+            border: 2px solid var(--navy-primary);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy-primary);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(1, 34, 53, 0.3);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .sub-note {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-top: 20px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .thank-you-content {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .thank-you-message {
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--navy-primary);
+            margin-bottom: 40px;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, var(--light-gray) 0%, rgba(248, 249, 250, 0.8) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .download-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--navy-primary);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 968px) {
+            .form-container {
+                flex-direction: row;
+            }
+
+            .image-section {
+                display: none !important;
+            }
+
+            .form-wrapper {
+                flex: 1;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .image-section {
+                display: none !important;
+            }
+
+            .form-wrapper {
+                width: 100%;
+                min-height: 100vh;
+            }
+
+            .progress-bar-container {
+                padding: 20px 20px;
+            }
+
+            .form-content {
+                padding: 30px 20px;
+            }
+
+            .headline {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            .question {
+                font-size: 1.4rem;
+                margin-bottom: 30px;
+            }
+
+            .sub-copy {
+                font-size: 1rem;
+                margin-bottom: 40px;
+            }
+
+            .radio-option {
+                padding: 20px 20px;
+            }
+
+            .radio-text {
+                font-size: 1.1rem;
+            }
+
+            .form-input {
+                padding: 16px 18px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 16px 30px;
+                font-size: 1rem;
+            }
+
+            .thank-you-content {
+                padding: 40px 20px;
+            }
+
+            .thank-you-message {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-content {
+                padding: 20px 15px;
+            }
+
+            .headline {
+                font-size: 1.8rem;
+            }
+
+            .question {
+                font-size: 1.3rem;
+            }
+
+            .radio-option {
+                padding: 18px 15px;
+            }
+
+            .btn {
+                padding: 14px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="https://api.web3forms.com/submit" method="POST" class="form-container">
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="0e4557ae-0861-4923-b646-e40b3a65a828">
+        <input type="hidden" name="subject" value="New Brand Growth Plan Request">
+        <input type="hidden" name="from_name" value="Brand Growth Form">
+        
+        <!-- Left Image Section -->
+        <div class="image-section">
+            <div class="image-overlay"></div>
+            <div class="image-content">
+                <h2>Transform Your Brand</h2>
+                <p>Join hundreds of businesses who've elevated their presence with our expert design and branding solutions. Let's create something extraordinary together.</p>
+                
+                <!-- Add Morley logo -->
+                <div style="margin-top: 40px; opacity: 0.7;">
+                    <img src="light_logo.png" alt="Morley Consultants" style="max-width: 120px; height: auto; filter: brightness(1.2);">
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Form Section -->
+        <div class="form-wrapper">
+            <!-- Progress Bar -->
+            <div class="progress-bar-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="step-indicator" id="stepIndicator">Welcome</div>
+            </div>
+
+            <!-- Form Content -->
+            <div class="form-content">
+                <!-- Intro Screen (Step 1) -->
+                <div class="step active" id="step0">
+                    <h1 class="headline">Let's tailor your brand growth plan</h1>
+                    <p class="sub-copy">This will only take about 60 seconds. At the end, you'll get personalized recommendations based on your answers.</p>
+                    <div class="button-group">
+                        <button class="btn" onclick="nextStep()">Start →</button>
+                    </div>
+                </div>
+
+                <!-- Step 2 - Who are you? -->
+                <div class="step" id="step1">
+                    <h2 class="question">Are you enquiring as a...</h2>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectRadio(this, 'userType', 'business')">
+                            <input type="radio" name="userType" value="Business" required>
+                            <div class="radio-text">Business</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'userType', 'selftrader')">
+                            <input type="radio" name="userType" value="Self Trader" required>
+                            <div class="radio-text">Self Trader</div>
+                        </label>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                        <button class="btn" onclick="nextStep()" id="step1Next" disabled>Next →</button>
+                    </div>
+                </div>
+
+                <!-- Step 3 - Contact Info -->
+                <div class="step" id="step2">
+                    <h2 class="question">Let's get your contact details</h2>
+                    <div class="form-group">
+                        <label class="form-label" for="userName">What's your name?</label>
+                        <input type="text" id="userName" name="name" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="userEmail">What's your email address?</label>
+                        <input type="email" id="userEmail" name="email" class="form-input" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="userPhone">What's the best phone number to reach you on?</label>
+                        <input type="tel" id="userPhone" name="phone" class="form-input" placeholder="Enter your phone number" required>
+                    </div>
+                    <p class="sub-note">We'll only use this to contact you about your enquiry.</p>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                        <button class="btn" onclick="nextStep()" id="step2Next">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Step 4 - Services -->
+                <div class="step" id="step3">
+                    <h2 class="question">Which service are you most interested in?</h2>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectRadio(this, 'service', 'website')">
+                            <input type="radio" name="service" value="Website Design & Development" required>
+                            <div class="radio-text">Website Design & Development</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'service', 'branding')">
+                            <input type="radio" name="service" value="Branding & Identity" required>
+                            <div class="radio-text">Branding & Identity</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'service', 'video')">
+                            <input type="radio" name="service" value="Video Editing / Content Production" required>
+                            <div class="radio-text">Video Editing / Content Production</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'service', 'mix')">
+                            <input type="radio" name="service" value="A mix of the above" required>
+                            <div class="radio-text">A mix of the above</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'service', 'guidance')">
+                            <input type="radio" name="service" value="Not sure yet — I need guidance" required>
+                            <div class="radio-text">Not sure yet — I need guidance</div>
+                        </label>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                        <button class="btn" onclick="nextStep()" id="step3Next" disabled>Next →</button>
+                    </div>
+                </div>
+
+                <!-- Step 5 - Project Goal -->
+                <div class="step" id="step4">
+                    <h2 class="question">What's the main goal of this project?</h2>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectRadio(this, 'goal', 'clients')">
+                            <input type="radio" name="goal" value="Attract more clients" required>
+                            <div class="radio-text">Attract more clients</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'goal', 'refresh')">
+                            <input type="radio" name="goal" value="Refresh my brand image" required>
+                            <div class="radio-text">Refresh my brand image</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'goal', 'online')">
+                            <input type="radio" name="goal" value="Build a stronger online presence" required>
+                            <div class="radio-text">Build a stronger online presence</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'goal', 'launch')">
+                            <input type="radio" name="goal" value="Launch something new" required>
+                            <div class="radio-text">Launch something new</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'goal', 'other')">
+                            <input type="radio" name="goal" value="other" required>
+                            <div class="radio-text">Other</div>
+                        </label>
+                    </div>
+                    <div class="form-group" id="otherGoalGroup" style="display: none;">
+                        <input type="text" id="otherGoal" name="otherGoal" class="form-input" placeholder="Please specify your goal">
+                    </div>
+                    <p class="sub-note">This helps us understand what success looks like for you.</p>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                        <button class="btn" onclick="nextStep()" id="step4Next" disabled>Next →</button>
+                    </div>
+                </div>
+
+                <!-- Step 6 - Budget -->
+                <div class="step" id="step5">
+                    <h2 class="question">What budget range best matches your project?</h2>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectRadio(this, 'budget', 'under1000')">
+                            <input type="radio" name="budget" value="Under £1,000" required>
+                            <div class="radio-text">Under £1,000</div>
+                            <div class="radio-description">(starter projects)</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'budget', '1000-3000')">
+                            <input type="radio" name="budget" value="£1,000 – £3,000" required>
+                            <div class="radio-text">£1,000 – £3,000</div>
+                            <div class="radio-description">(standard packages)</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'budget', '3000-7500')">
+                            <input type="radio" name="budget" value="£3,000 – £7,500" required>
+                            <div class="radio-text">£3,000 – £7,500</div>
+                            <div class="radio-description">(branding + full website or video package)</div>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'budget', '7500plus')">
+                            <input type="radio" name="budget" value="£7,500+" required>
+                            <div class="radio-text">£7,500+</div>
+                            <div class="radio-description">(comprehensive branding, website & media projects)</div>
+                        </label>
+                    </div>
+                    <p class="sub-note">This helps us recommend the right approach for your goals.</p>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                        <button class="btn" onclick="submitForm()" id="step5Next" disabled>Get My Plan →</button>
+                    </div>
+                </div>
+
+                <!-- Thank You Screen -->
+                <div class="step" id="thankYou">
+                    <div class="thank-you-content">
+                        <h2 class="headline">Thank you!</h2>
+                        <p class="thank-you-message" id="thankYouMessage"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        let currentStep = 0;
+        const totalSteps = 6;
+        const formData = {};
+
+        // Update progress bar
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            
+            const stepNames = ['Welcome', 'Step 1 of 6', 'Step 2 of 6', 'Step 3 of 6', 'Step 4 of 6', 'Step 5 of 6', 'Step 6 of 6'];
+            document.getElementById('stepIndicator').textContent = stepNames[currentStep];
+        }
+
+        // Show specific step
+        function showStep(stepIndex) {
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+            document.getElementById(`step${stepIndex}`).classList.add('active');
+            updateProgress();
+        }
+
+        // Next step
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        }
+
+        // Previous step
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
+
+        // Handle radio button selection
+        function selectRadio(element, name, value) {
+            // Remove selected class from all options in this group
+            document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                input.closest('.radio-option').classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+            
+            // Store value in form data
+            formData[name] = value;
+            
+            // Enable next button
+            const nextButton = document.getElementById(`step${currentStep}Next`);
+            if (nextButton) {
+                nextButton.disabled = false;
+            }
+
+            // Handle "Other" option for project goal
+            if (name === 'goal') {
+                const otherGroup = document.getElementById('otherGoalGroup');
+                if (value === 'other') {
+                    otherGroup.style.display = 'block';
+                } else {
+                    otherGroup.style.display = 'none';
+                }
+            }
+        }
+
+        // Validate contact form
+        function validateContactForm() {
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const phone = document.getElementById('userPhone').value;
+            
+            return name.trim() !== '' && email.trim() !== '' && phone.trim() !== '';
+        }
+
+        // Submit form
+        function submitForm() {
+            // Collect all form data
+            formData.name = document.getElementById('userName').value;
+            formData.email = document.getElementById('userEmail').value;
+            formData.phone = document.getElementById('userPhone').value;
+            
+            if (formData.goal === 'other') {
+                formData.otherGoal = document.getElementById('otherGoal').value;
+            }
+
+            // No need to create hidden inputs since the form fields already have proper name attributes
+
+            // Show thank you message
+            showThankYou();
+            
+            // Submit form to Web3Forms
+            form.submit();
+        }
+
+        // Show thank you screen with dynamic message
+        function showThankYou() {
+            const userName = formData.name;
+            const userType = formData.userType;
+            
+            let message = '';
+            if (userType === 'business') {
+                message = `Thanks, ${userName}. One of our consultants will be in touch shortly with tailored recommendations for your business.`;
+            } else {
+                message = `Thanks, ${userName}. We'll be in touch soon with strategies designed to help you stand out and grow as an independent trader.`;
+            }
+            
+            document.getElementById('thankYouMessage').textContent = message;
+            document.getElementById('thankYou').classList.add('active');
+            document.querySelectorAll('.step:not(#thankYou)').forEach(step => step.classList.remove('active'));
+            
+            // Update progress to 100%
+            document.getElementById('progressFill').style.width = '100%';
+            document.getElementById('stepIndicator').textContent = 'Complete!';
+        }
+
+        // Add event listeners for contact form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactInputs = ['userName', 'userEmail', 'userPhone'];
+            contactInputs.forEach(inputId => {
+                document.getElementById(inputId).addEventListener('input', function() {
+                    const nextButton = document.getElementById('step2Next');
+                    nextButton.disabled = !validateContactForm();
+                });
+            });
+
+            // Handle other goal input
+            document.getElementById('otherGoal').addEventListener('input', function() {
+                const nextButton = document.getElementById('step4Next');
+                if (formData.goal === 'other') {
+                    nextButton.disabled = this.value.trim() === '';
+                }
+            });
+        });
+
+        // Initialize
+        updateProgress();
+    </script>
+</body>
+</html>
